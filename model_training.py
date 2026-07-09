@@ -1,29 +1,9 @@
-"""
-finetune_yolov8.py
-══════════════════════════════════════════════════════════════════
-Fine-tunes a pretrained YOLOv8 model on your already-downloaded
-Roboflow multi-weapon dataset.
 
-Make sure your dataset folder looks like this (standard Roboflow export):
-
-    weapon-dataset/
-    ├── data.yaml
-    ├── train/
-    │   ├── images/
-    │   └── labels/
-    ├── valid/
-    │   ├── images/
-    │   └── labels/
-    └── test/
-        ├── images/
-        └── labels/
-══════════════════════════════════════════════════════════════════
-"""
 
 from ultralytics import YOLO
 
 # ── 1. Load a pretrained YOLOv8 model ────────────────────────────
-model = YOLO("yolov8n.pt")   # pretrained on COCO; use yolov8s.pt/yolov8m.pt for more accuracy
+model = YOLO("yolov8n.pt")  
 
 # ── 2. Fine-tune it on your weapon dataset ───────────────────────
 results = model.train(
@@ -31,7 +11,7 @@ results = model.train(
     epochs=50,
     imgsz=640,
     batch=16,
-    device="0",        # use "0" for GPU, or "cpu" if no GPU
+    device="0",      
     name="weapon_detector"
 )
 
